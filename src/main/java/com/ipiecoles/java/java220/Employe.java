@@ -134,8 +134,8 @@ public abstract class Employe {
     //paramètre. Ex : un salaire de 500.0, avec une augmentation de 0.50, cela donne un salaire de
     //750.0
     public void augmenterSalaire(Double pourcentage) {
-        salaire = salaire*(1+pourcentage);
-
+        this.salaire = salaire*(1+pourcentage);
+        //setSalaire(this.getSalaire() * (1 + pourcentage)); //On utilise pour prendre en compte les modifications dans les classes en dessous
     }
 
 

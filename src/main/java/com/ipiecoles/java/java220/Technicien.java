@@ -3,7 +3,10 @@ package com.ipiecoles.java.java220;
 import com.ipiecoles.java.java220.exception.TechnicienException;
 import org.joda.time.LocalDate;
 
-public class Technicien extends Employe {
+import java.lang.Comparable;
+import java.util.Objects;
+
+public class Technicien extends Employe implements Comparable<Technicien> {
     private Integer grade;
 
     public Technicien () {
@@ -73,5 +76,32 @@ public class Technicien extends Employe {
         Double primeGrade = primeAnnuelleBase * (1 + grade * 0.1);
         Double primeAnciennete = Entreprise.PRIME_ANCIENNETE * this.getNombreAnneeAnciennete();
         return primeAnnuelleBase + primeGrade + primeAnciennete;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Technicien that = (Technicien) o;
+        return Objects.equals(grade, that.grade);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), grade);
+    }
+
+
+    //4.8. Implémenter l'interface Comparable pour que l'on puisse comparer deux Techniciens
+
+    //equals et hashCode pour intégrer le nouvel attribut grade.
+
+    //en fonction de leur grade plus le grade est haut, plus le technicien est compétent. Redéfinir equals et hashCode pour intégrer le nouvel attribut grade.
+    //methode permettant de comparer deux techniciens
+
+    @Override
+    public int compareTo(Technicien o) {
+        return Integer.compare(this.grade, o.getGrade());
     }
 }

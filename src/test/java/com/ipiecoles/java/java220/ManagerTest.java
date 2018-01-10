@@ -92,7 +92,7 @@ public class ManagerTest {
         //de son équipe (en utilisant Entreprise.PRIME_MANAGER_PAR_TECHNICIEN)
         Object d = TestUtils.getClasse("Manager").getConstructor().newInstance();
         try {
-            Assertions.assertThat(TestUtils.callMethod(d, "getPrimeAnnuelle")).isEqualTo(1008.5);
+            Assertions.assertThat(TestUtils.callMethod(d, "getPrimeAnnuelle")).isEqualTo(1009d);
         }
         catch(Exception exception){
             Assertions.fail("L'affectation n'aurait pas du lancer une exception");
@@ -100,7 +100,7 @@ public class ManagerTest {
 
         try {
             TestUtils.invokeSetter(d, "equipe", Stream.of(TestUtils.getClasse("Technicien").getConstructor(String.class, String.class, String.class, LocalDate.class, Double.class, Integer.class).newInstance(null, null, null, null, 0.0, 1)).collect(Collectors.toSet()));
-            Assertions.assertThat(TestUtils.callMethod(d, "getPrimeAnnuelle")).isEqualTo(1258.5);
+            Assertions.assertThat(TestUtils.callMethod(d, "getPrimeAnnuelle")).isEqualTo(1259d);
         }
         catch(Exception technicienException){
             Assertions.fail("L'affectation n'aurait pas du lancer une exception");
@@ -108,7 +108,7 @@ public class ManagerTest {
 
         try {
             TestUtils.invokeSetter(d, "equipe", Stream.of(TestUtils.getClasse("Technicien").getConstructor(String.class, String.class, String.class, LocalDate.class, Double.class, Integer.class).newInstance(null, null, null, null, 0.0, 1), TestUtils.getClasse("Technicien").getConstructor(String.class, String.class, String.class, LocalDate.class, Double.class, Integer.class).newInstance(null, null, null, null, 0.0, 2)).collect(Collectors.toSet()));
-            Assertions.assertThat(TestUtils.callMethod(d, "getPrimeAnnuelle")).isEqualTo(1508.5);
+            Assertions.assertThat(TestUtils.callMethod(d, "getPrimeAnnuelle")).isEqualTo(1509d);
         }
         catch(Exception technicienException){
             Assertions.fail("L'affectation n'aurait pas du lancer une exception");
